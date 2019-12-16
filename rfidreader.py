@@ -49,7 +49,7 @@ def send_iot_payload(payload):
 
 
 def greengrass_hello_world_run():
-    read()
+    reader()
    # Asynchronously schedule this function to be run again in 5 seconds
     Timer(5, greengrass_hello_world_run).start()
 
