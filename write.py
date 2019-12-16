@@ -40,3 +40,18 @@ try:
 finally:
     GPIO.cleanup()
 
+def greengrass_hello_world_run():
+    read()
+   # Asynchronously schedule this function to be run again in 5 seconds
+    Timer(5, greengrass_hello_world_run).start()
+
+
+
+# Start executing the function above
+greengrass_hello_world_run()
+
+
+# This is a dummy handler and will not be invoked
+# Instead the code above will be executed in an infinite loop for our example
+def function_handler(event, context):
+    return
