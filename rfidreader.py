@@ -23,19 +23,19 @@ continue_reading = True
 sys.path.append('/home/pi/MFRC522-python')
 from mfrc522 import SimpleMFRC522
 
-reader = SimpleMFRC522()
+def reader():
+    reader = SimpleMFRC522()
+    print("Hold a tag near the reader")
 
-print("Hold a tag near the reader")
+    try:
+        id, text = reader.read()
+        print(id)
+        send_iot_payload("id")
+        print(text)
+        send_iot_payload("text")
 
-try:
-    id, text = reader.read()
-    print(id)
-    send_iot_payload("id")
-    print(text)
-    send_iot_payload("text")
-
-finally:
-    GPIO.cleanup()
+    finally:
+        GPIO.cleanup()
 
 def send_iot_payload(payload):
     try:
