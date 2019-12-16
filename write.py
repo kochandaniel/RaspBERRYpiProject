@@ -1,4 +1,4 @@
-# School project
+# School project Dank
 
 #!/usr/bin/env python
 
