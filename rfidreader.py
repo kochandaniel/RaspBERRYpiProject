@@ -8,7 +8,7 @@ import platform
 import RPi.GPIO as GPIO
 import sys
 from threading import Timer
-import signal
+
 
 # Setup logging to stdout
 logger = logging.getLogger(__name__)
@@ -26,18 +26,19 @@ sys.path.append('/home/pi/MFRC522-python')
 from mfrc522 import SimpleMFRC522
 
 def reader():
-    reader = SimpleMFRC522()
+    mfrc_reader = SimpleMFRC522()
     print("Hold a tag near the reader")
 
     try:
-        id, text = reader.read()
+        id, text = mfrc_reader.read()
         print(id)
         send_iot_payload("id")
         print(text)
         send_iot_payload("text")
 
     finally:
-        GPIO.cleanup()
+        pass
+#        GPIO.cleanup()
 
 def send_iot_payload(payload):
     try:
